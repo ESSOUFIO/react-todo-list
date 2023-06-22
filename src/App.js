@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./App.module.css";
 import { MdAdd } from "react-icons/md";
 import Task from "./components/task/Task";
@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import AddEditModal from "./components/modals/AddEditModal";
 import DeleteModal from "./components/modals/DeleteModal";
 import IsDoneModal from "./components/modals/IsDoneModal";
+import Stat from "./components/stat/Stat";
 
 const initTask = {
   title: "",
@@ -24,6 +25,14 @@ function App() {
   const [isDoneShow, setIsDoneShow] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
+  useEffect(() => {
+    let TasksStorage;
+    TasksStorage = JSON.parse(localStorage.getItem("Tasks"));
+    if (TasksStorage) {
+      setTasks(TasksStorage);
+    }
+  }, []);
+
   const inputHandle = (e) => {
     const { name, value } = e.target;
     setNewTask({
@@ -37,11 +46,21 @@ function App() {
     let array = [];
     if (action.type === "Add") {
       array = tasks;
-      array.push(newTask);
+      const obj = {
+        ...newTask,
+        isDone: newTask.status === "Done" ? true : false,
+      };
+      array.push(obj);
       setShow(false);
     } else if (action.type === "Edit") {
       array = tasks.map((task, i) => {
-        if (i === action.index) return newTask;
+        if (i === action.index) {
+          const obj = {
+            ...newTask,
+            isDone: newTask.status === "Done" ? true : false,
+          };
+          return obj;
+        }
         return task;
       });
       setShow(false);
@@ -64,6 +83,7 @@ function App() {
       setIsDoneShow(false);
     }
     setTasks(array);
+    localStorage.setItem("Tasks", JSON.stringify(tasks));
   };
 
   const handleClose = () => setShow(false);
@@ -140,16 +160,7 @@ function App() {
               );
             })}
           </div>
-          <div className={styles.stat}>
-            <div
-              style={{
-                position: "absolute",
-                textAlign: "center",
-                width: "300px",
-              }}
-              id="Stat_text"
-            ></div>
-          </div>
+          <Stat tasks={tasks} />
         </div>
       </main>
       <IsDoneModal
