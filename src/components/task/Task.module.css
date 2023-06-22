@@ -1,0 +1,68 @@
+.task {
+  height: 65px;
+  grid-template-columns: 45px 2fr 1fr 1fr 1fr 3vw repeat(2, 4vw) 1vw;
+  background: white;
+  border-radius: 10px;
+  border-bottom: 1px solid black;
+  box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.5);
+  display: grid;
+  align-items: center;
+  padding-left: 5px;
+  margin-bottom: 8px;
+}
+
+.task:hover {
+  box-shadow: 2px 5px 15px rgba(0, 0, 0, 0.6);
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.Status_Done {
+  width: 120px;
+  padding: 3px 0;
+  border-radius: 7px;
+  background: rgb(2, 165, 2);
+  text-align: center;
+  display: block;
+  color: white;
+  font-weight: 700;
+}
+.Status_InProgress {
+  width: 120px;
+  padding: 3px 0;
+  border-radius: 7px;
+  background: rgb(3, 211, 248);
+  text-align: center;
+  display: block;
+  color: black;
+  font-weight: 700;
+}
+.Status_NotStarted {
+  width: 120px;
+  padding: 3px 0;
+  border-radius: 7px;
+  background: rgb(251, 255, 6);
+  text-align: center;
+  display: block;
+  color: black;
+  font-weight: 700;
+}
+.Status_Canceled {
+  width: 120px;
+  padding: 3px 0;
+  border-radius: 7px;
+  background: rgb(204, 3, 3);
+  text-align: center;
+  display: block;
+  color: white;
+  font-weight: 700;
+}
