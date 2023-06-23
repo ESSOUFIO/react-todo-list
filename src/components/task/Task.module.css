@@ -66,3 +66,31 @@
   color: white;
   font-weight: 700;
 }
+
+@media screen and (max-width: 800px) {
+  .task {
+    height: 85px;
+    grid-template-columns: 45px 2fr 1fr 3vw;
+    grid-template-rows: 5% 45% 45% 5%;
+  }
+
+  .icon {
+    font-size: 24px;
+  }
+
+  .icon_mobileScreen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .Status_Done,
+  .Status_InProgress,
+  .Status_Canceled,
+  .Status_NotStarted {
+    width: 110px;
+    padding: 2px 0;
+    font-weight: 700;
+    font-size: 15px;
+  }
+}

@@ -22,3 +22,15 @@
   background: rgb(255, 230, 0);
   border-radius: 10px;
 }
+
+@media screen and (max-width: 800px) {
+  .stat {
+    margin-top: 15px;
+    width: 250px;
+    height: 35px;
+    font-size: 16px;
+  }
+  .Ratio-task {
+    height: 35px;
+  }
+}

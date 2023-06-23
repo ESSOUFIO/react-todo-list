@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import styles from "./App.module.css";
 import { MdAdd } from "react-icons/md";
 import Task from "./components/task/Task";
-
 import "bootstrap/dist/css/bootstrap.min.css";
 import AddEditModal from "./components/modals/AddEditModal";
 import DeleteModal from "./components/modals/DeleteModal";
 import IsDoneModal from "./components/modals/IsDoneModal";
 import Stat from "./components/stat/Stat";
+import { useMediaQuery } from "react-responsive";
+import TaskMobileScreen from "./components/task/TaskMobileScreen";
 
 const initTask = {
   title: "",
@@ -24,6 +25,10 @@ function App() {
   const [show, setShow] = useState(false);
   const [isDoneShow, setIsDoneShow] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+
+  const isMobileScreen = useMediaQuery({
+    query: "(max-width: 800px)",
+  });
 
   useEffect(() => {
     let TasksStorage;
@@ -137,27 +142,42 @@ function App() {
             </div>
           </header>
 
-          <div className={styles.menu}>
-            <div></div>
-            <div>Title</div>
-            <div style={{ textAlign: "center" }}>Start date</div>
-            <div style={{ textAlign: "center" }}>End date</div>
-            <div style={{ textAlign: "center" }}>Status</div>
-            <div></div>
-          </div>
+          {!isMobileScreen && (
+            <div className={styles.menu}>
+              <div></div>
+              <div>Title</div>
+              <div style={{ textAlign: "center" }}>Start date</div>
+              <div style={{ textAlign: "center" }}>End date</div>
+              <div style={{ textAlign: "center" }}>Status</div>
+              <div></div>
+            </div>
+          )}
 
           <div id="tasksBack">
             {tasks.map((task, index) => {
-              return (
-                <Task
-                  key={index}
-                  task={task}
-                  index={index}
-                  editTask={editTask}
-                  deleteTask={deleteTask}
-                  isDoneTask={isDoneTask}
-                />
-              );
+              if (isMobileScreen) {
+                return (
+                  <TaskMobileScreen
+                    key={index}
+                    task={task}
+                    index={index}
+                    editTask={editTask}
+                    deleteTask={deleteTask}
+                    isDoneTask={isDoneTask}
+                  />
+                );
+              } else {
+                return (
+                  <Task
+                    key={index}
+                    task={task}
+                    index={index}
+                    editTask={editTask}
+                    deleteTask={deleteTask}
+                    isDoneTask={isDoneTask}
+                  />
+                );
+              }
             })}
           </div>
           <Stat tasks={tasks} />
