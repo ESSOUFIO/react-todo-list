@@ -6,7 +6,6 @@ const Stat = ({ tasks }) => {
   const [nbrDone, setNbrDone] = useState(0);
 
   useEffect(() => {
-    console.log("effect");
     if (tasks !== []) {
       let nbr = 0;
       setNbrTasks(tasks.length);
@@ -21,7 +20,6 @@ const Stat = ({ tasks }) => {
 
   const ratio = (nbrDone / nbrTasks) * 100;
 
-  console.log(tasks, nbrDone, nbrTasks);
   return (
     <div className={styles.stat}>
       <div className={styles.text} id="Stat_text">
