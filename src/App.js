@@ -1,14 +1,13 @@
+import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
 import styles from "./App.module.css";
 import { MdAdd } from "react-icons/md";
-import Task from "./components/task/Task";
-import "bootstrap/dist/css/bootstrap.min.css";
 import AddEditModal from "./components/modals/AddEditModal";
 import DeleteModal from "./components/modals/DeleteModal";
 import IsDoneModal from "./components/modals/IsDoneModal";
 import Stat from "./components/stat/Stat";
 import { useMediaQuery } from "react-responsive";
-import TaskMobileScreen from "./components/task/TaskMobileScreen";
+import TaskList from "./components/task/TaskList";
 
 const initTask = {
   title: "",
@@ -142,44 +141,23 @@ function App() {
             </div>
           </header>
 
-          {!isMobileScreen && (
-            <div className={styles.menu}>
-              <div></div>
-              <div>Title</div>
-              <div style={{ textAlign: "center" }}>Start date</div>
-              <div style={{ textAlign: "center" }}>End date</div>
-              <div style={{ textAlign: "center" }}>Status</div>
-              <div></div>
-            </div>
-          )}
-
-          <div id="tasksBack">
-            {tasks.map((task, index) => {
-              if (isMobileScreen) {
-                return (
-                  <TaskMobileScreen
-                    key={index}
-                    task={task}
-                    index={index}
-                    editTask={editTask}
-                    deleteTask={deleteTask}
-                    isDoneTask={isDoneTask}
-                  />
-                );
-              } else {
-                return (
-                  <Task
-                    key={index}
-                    task={task}
-                    index={index}
-                    editTask={editTask}
-                    deleteTask={deleteTask}
-                    isDoneTask={isDoneTask}
-                  />
-                );
-              }
-            })}
+          <div className={`${isMobileScreen ? styles.hidden : styles.menu}`}>
+            <div></div>
+            <div>Title</div>
+            <div style={{ textAlign: "center" }}>Start date</div>
+            <div style={{ textAlign: "center" }}>End date</div>
+            <div style={{ textAlign: "center" }}>Status</div>
+            <div></div>
           </div>
+
+          <TaskList
+            tasks={tasks}
+            isMobileScreen={isMobileScreen}
+            editTask={editTask}
+            deleteTask={deleteTask}
+            isDoneTask={isDoneTask}
+          />
+
           <Stat tasks={tasks} />
         </div>
       </main>
