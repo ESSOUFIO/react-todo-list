@@ -1,7 +1,8 @@
 .stat {
   position: relative;
   margin-top: 15px;
-  width: 300px;
+  width: 100%;
+  max-width: 300px;
   height: 40px;
   background: var(--color-stat-back-lightMode);
   border-radius: 10px;
@@ -33,7 +34,7 @@
 @media screen and (max-width: 800px) {
   .stat {
     margin-top: 15px;
-    width: 250px;
+    max-width: 250px;
     height: 35px;
     font-size: 16px;
   }

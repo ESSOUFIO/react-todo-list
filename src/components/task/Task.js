@@ -34,7 +34,7 @@ const Task = ({ task, index, isDoneTask, editTask, deleteTask, darkMode }) => {
         </div>
       </div>
       <div>
-        <h5 style={{ margin: "0" }}>{task.title}</h5>
+        <h5 className={styles.taskTitle}>{task.title}</h5>
       </div>
       <div style={{ textAlign: "center" }}>
         <span>{task.start_date}</span>

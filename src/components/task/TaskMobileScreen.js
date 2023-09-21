@@ -48,7 +48,7 @@ const TaskMobileScreen = ({
         </div>
 
         <div>
-          <h5 style={{ margin: "0" }}>{task.title}</h5>
+          <h5 className={styles.taskTitleMobile}>{task.title}</h5>
         </div>
 
         <div
@@ -69,7 +69,8 @@ const TaskMobileScreen = ({
         <div></div>
         <div></div>
 
-        <div style={{ fontSize: "13px" }}>
+        {/* <div style={{ fontSize: "13px" }}>
+
           <div>
             <span>
               Start : <b>{task.start_date}</b>
@@ -79,6 +80,22 @@ const TaskMobileScreen = ({
             <span>
               End : <b>{task.end_date}</b>
             </span>
+          </div>
+        </div> */}
+
+        <div>
+          <div className={styles.date}>
+            <p>Start: </p>
+            <p>
+              <b>{task.start_date}</b>
+            </p>
+          </div>
+
+          <div className={styles.date}>
+            <p>End: </p>
+            <p>
+              <b>{task.end_date}</b>
+            </p>
           </div>
         </div>
         <div>
