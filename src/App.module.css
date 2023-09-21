@@ -1,7 +1,7 @@
 body {
   font-family: "Nunito Sans", sans-serif;
   /* background: linear-gradient(to right, rgb(4, 4, 109) , rgb(159, 159, 248)); */
-  background: linear-gradient(to right, #e66465, #9198e5);
+
   margin: 0;
   box-sizing: border-box;
   font-weight: 600;
@@ -15,6 +15,16 @@ body {
 main {
   display: flex;
   justify-content: center;
+  min-height: 100vh;
+  background: var(--back-app-lightMode);
+}
+
+.darkBack {
+  background: var(--back-app-darkMode);
+}
+
+.checkbox_dispMode {
+  color: var(--color-header-lightMode);
 }
 
 header {
@@ -28,11 +38,11 @@ header {
   height: 60px;
   width: 100%;
   font-size: 30px;
-  border: 3px solid white;
+  border: 3px solid var(--color-header-lightMode);
   background: rgb(255 255 255 / 15%);
   border-radius: 10px;
   text-align: center;
-  color: white;
+  color: var(--color-header-lightMode);
   font-weight: 800;
   display: flex;
   align-items: center;
@@ -54,6 +64,13 @@ header {
   cursor: pointer;
   box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.5);
 }
+
+.header_darkMode {
+  border: 1px solid var(--color-header-darkMode);
+  color: var(--color-header-darkMode);
+  background: rgb(255 255 255 / 7%);
+}
+
 .add_btn:hover {
   background: rgba(255, 255, 255, 0.356);
 }
@@ -215,22 +232,20 @@ select {
 /* Responsive
 -----------------------------------*/
 
-@media screen and (min-width: 1200px) {
-  .listBack {
-    width: 70vw;
-    margin-top: 60px;
-  }
+.container {
+  width: 70vw;
+  margin-top: 60px;
 }
 
 @media screen and (max-width: 1199px) {
-  .listBack {
+  .container {
     width: 90vw;
     margin-top: 60px;
   }
 }
 
 @media screen and (max-width: 800px) {
-  .listBack {
+  .container {
     width: 85vw;
     margin-top: 20px;
   }
@@ -313,5 +328,12 @@ select {
   .WindowDelete {
     margin-bottom: 50px;
     width: 330px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    width: 95vw;
+    margin-top: 20px;
   }
 }

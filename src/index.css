@@ -1,13 +1,43 @@
+:root {
+  /** App backgound **/
+  --back-app-lightMode: linear-gradient(to right, #e66465, #9198e5);
+  --back-app-darkMode: linear-gradient(
+    to right bottom,
+    rgb(103 33 78),
+    rgb(9 11 26)
+  );
+
+  /** Header **/
+  --color-header-lightMode: #fff;
+  --color-header-darkMode: #ffffffeb;
+
+  /** Task **/
+  --color-task-text-lightMode: #000;
+  --color-task-text-darkMode: rgb(255, 255, 127);
+  --color-task-back-lightMode: #fff;
+  --color-task-back-darkMode: transparent;
+  --color-task-border-lightMode: transparent;
+  --color-task-border-darkMode: rgb(255, 255, 127);
+
+  /** Stat **/
+  --color-stat-back-lightMode: rgb(255 255 255 / 15%);
+  --color-stat-back-darkMode: rgb(250 251 166 / 34%);
+
+  /** green **/
+  --color-green-lightMode: green;
+  --color-green-darkMode: #43ff43;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }

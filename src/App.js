@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./App.module.css";
 import { MdAdd } from "react-icons/md";
 import AddEditModal from "./components/modals/AddEditModal";
@@ -8,6 +8,7 @@ import IsDoneModal from "./components/modals/IsDoneModal";
 import Stat from "./components/stat/Stat";
 import { useMediaQuery } from "react-responsive";
 import TaskList from "./components/task/TaskList";
+import { Form } from "react-bootstrap";
 
 const initTask = {
   title: "",
@@ -24,6 +25,7 @@ function App() {
   const [show, setShow] = useState(false);
   const [isDoneShow, setIsDoneShow] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
 
   const isMobileScreen = useMediaQuery({
     query: "(max-width: 800px)",
@@ -128,15 +130,42 @@ function App() {
     setShowDeleteModal(true);
   };
 
+  const darkModeHandler = () => {
+    setDarkMode(!darkMode);
+  };
+
   return (
     <>
-      <main>
-        <div className={styles.listBack}>
+      <main className={darkMode ? styles.darkBack : ""}>
+        <div className={styles.container}>
+          <Form>
+            <Form.Check // prettier-ignore
+              type="switch"
+              id="dark_mode"
+              label="Dark Mode"
+              value={darkMode}
+              onChange={darkModeHandler}
+              className={styles.checkbox_dispMode}
+            />
+          </Form>
           <header>
-            <div className={styles.title}>
-              <span>TODO LIST</span>
+            <div
+              className={
+                darkMode
+                  ? `${styles.title} ${styles.header_darkMode}`
+                  : styles.title
+              }
+            >
+              TODO LIST
             </div>
-            <div className={styles["add_btn"]} onClick={addTask}>
+            <div
+              className={
+                darkMode
+                  ? `${styles.add_btn} ${styles.header_darkMode}`
+                  : styles.add_btn
+              }
+              onClick={addTask}
+            >
               <MdAdd size={40} />
             </div>
           </header>
@@ -156,9 +185,10 @@ function App() {
             editTask={editTask}
             deleteTask={deleteTask}
             isDoneTask={isDoneTask}
+            darkMode={darkMode}
           />
 
-          <Stat tasks={tasks} />
+          <Stat tasks={tasks} darkMode={darkMode} />
         </div>
       </main>
       <IsDoneModal

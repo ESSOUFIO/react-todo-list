@@ -1,14 +1,22 @@
 .task {
   height: 65px;
   grid-template-columns: 45px 2fr 1fr 1fr 1fr 3vw repeat(2, 4vw) 1vw;
-  background: white;
+  background: var(--color-task-back-lightMode);
+  color: var(--color-task-text-lightMode);
   border-radius: 10px;
+  border: 1px solid var(--color-task-border-lightMode);
   border-bottom: 1px solid black;
   box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.5);
   display: grid;
   align-items: center;
   padding-left: 5px;
   margin-bottom: 8px;
+}
+
+.task_darkMode {
+  background: var(--color-task-back-darkMode);
+  color: var(--color-task-text-darkMode);
+  border: 1px solid var(--color-task-border-darkMode);
 }
 
 .task:hover {

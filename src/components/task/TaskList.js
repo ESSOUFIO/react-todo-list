@@ -8,6 +8,7 @@ const TaskList = ({
   editTask,
   deleteTask,
   isDoneTask,
+  darkMode,
 }) => {
   return (
     <div>
@@ -21,6 +22,7 @@ const TaskList = ({
               editTask={editTask}
               deleteTask={deleteTask}
               isDoneTask={isDoneTask}
+              darkMode={darkMode}
             />
           );
         } else {
@@ -32,6 +34,7 @@ const TaskList = ({
               editTask={editTask}
               deleteTask={deleteTask}
               isDoneTask={isDoneTask}
+              darkMode={darkMode}
             />
           );
         }

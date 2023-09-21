@@ -9,10 +9,15 @@ const TaskMobileScreen = ({
   isDoneTask,
   editTask,
   deleteTask,
+  darkMode,
 }) => {
   return (
     <>
-      <div className={styles.task}>
+      <div
+        className={
+          darkMode ? `${styles.task} ${styles.task_darkMode}` : styles.task
+        }
+      >
         <div></div>
         <div></div>
         <div></div>
@@ -21,9 +26,23 @@ const TaskMobileScreen = ({
         <div>
           <div className={styles.icon} onClick={() => isDoneTask(index)}>
             {task.isDone ? (
-              <BsCheckSquareFill color="green" size={20} />
+              <BsCheckSquareFill
+                color={
+                  darkMode
+                    ? "var(--color-green-darkMode)"
+                    : "var(--color-green-lightMode)"
+                }
+                size={20}
+              />
             ) : (
-              <BsCheckSquare color="green" size={20} />
+              <BsCheckSquare
+                color={
+                  darkMode
+                    ? "var(--color-green-darkMode)"
+                    : "var(--color-green-lightMode)"
+                }
+                size={20}
+              />
             )}
           </div>
         </div>
@@ -65,7 +84,14 @@ const TaskMobileScreen = ({
         <div>
           <div className={`${styles["icon_mobileScreen"]}`}>
             <span className={styles.icon} onClick={() => editTask(index)}>
-              <MdEdit color="green" size={24} />
+              <MdEdit
+                color={
+                  darkMode
+                    ? "var(--color-green-darkMode)"
+                    : "var(--color-green-lightMode)"
+                }
+                size={24}
+              />
             </span>
             <span className={styles.icon} onClick={() => deleteTask(index)}>
               <MdDelete color="red" size={24} />

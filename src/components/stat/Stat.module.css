@@ -1,8 +1,9 @@
 .stat {
+  position: relative;
   margin-top: 15px;
   width: 300px;
   height: 40px;
-  background: rgb(255 255 255 / 15%);
+  background: var(--color-stat-back-lightMode);
   border-radius: 10px;
   box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.5);
   color: rgb(0, 0, 0);
@@ -11,13 +12,19 @@
   align-items: center;
 }
 
+.stat_darkMode {
+  background: var(--color-stat-back-darkMode);
+}
+
 .text {
-  position: absolute;
   text-align: center;
   width: 300px;
+  z-index: 99;
 }
 
 .Ratio-task {
+  position: absolute;
+  left: 0;
   height: 40px;
   background: rgb(255, 230, 0);
   border-radius: 10px;

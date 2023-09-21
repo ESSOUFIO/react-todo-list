@@ -3,15 +3,33 @@ import styles from "./Task.module.css";
 import { BsCheckSquare, BsCheckSquareFill } from "react-icons/bs";
 import { MdEdit, MdDelete } from "react-icons/md";
 
-const Task = ({ task, index, isDoneTask, editTask, deleteTask }) => {
+const Task = ({ task, index, isDoneTask, editTask, deleteTask, darkMode }) => {
   return (
-    <div className={styles.task}>
+    <div
+      className={
+        darkMode ? `${styles.task} ${styles.task_darkMode}` : styles.task
+      }
+    >
       <div>
         <div className={styles.icon} onClick={() => isDoneTask(index)}>
           {task.isDone ? (
-            <BsCheckSquareFill color="green" size={20} />
+            <BsCheckSquareFill
+              color={
+                darkMode
+                  ? "var(--color-green-darkMode)"
+                  : "var(--color-green-lightMode)"
+              }
+              size={20}
+            />
           ) : (
-            <BsCheckSquare color="green" size={20} />
+            <BsCheckSquare
+              color={
+                darkMode
+                  ? "var(--color-green-darkMode)"
+                  : "var(--color-green-lightMode)"
+              }
+              size={20}
+            />
           )}
         </div>
       </div>
@@ -41,7 +59,14 @@ const Task = ({ task, index, isDoneTask, editTask, deleteTask }) => {
       <div></div>
       <div>
         <span className={styles.icon} onClick={() => editTask(index)}>
-          <MdEdit color="green" size={24} />
+          <MdEdit
+            color={
+              darkMode
+                ? "var(--color-green-darkMode)"
+                : "var(--color-green-lightMode)"
+            }
+            size={24}
+          />
         </span>
       </div>
       <div>
